@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ProyectoDatosEF.Models.Plantilla>
+
+@{
+    ViewData["Title"] = "BuscarPlantillaPorFuncion";
+    List<String> funciones = ViewData["FUNCIONES"] as List<String>;
+}
+
+<h1>Plantilla por funcion</h1>
+
+<form method="post">
+    <label>Inserte funcion:</label>
+    <select name="funcion">
+        @foreach(String funcion in funciones)
+        {
+            <option value="@funcion">@funcion</option>
+        }
+    </select>
+    <button class="btn btn-dark">Buscar personas</button>
+</form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHospital)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSala)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHospital)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSala)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

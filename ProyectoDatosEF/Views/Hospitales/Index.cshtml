@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProyectoDatosEF.Models.Hospital>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de hospitales</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHospital)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Camas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHospital)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Camas)
+            </td>
+            <td>
+                <a asp-controller="Hospitales" asp-action="Details" asp-route-id="@item.IdHospital">Detalles</a>
+                <a asp-controller="Doctores" asp-action="DoctoresHospital" asp-route-idhospital="@item.IdHospital">Doctores</a>
+                <a asp-controller="Plantillas" asp-action="EmpleadosPlantilla" asp-route-idhospital="@item.IdHospital">Plantilla</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
