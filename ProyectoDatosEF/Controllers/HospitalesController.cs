@@ -23,5 +23,30 @@ namespace ProyectoDatosEF.Controllers
             Hospital hospital = this.repo.FindHospital(id);
             return View(hospital);
         }
+
+        public IActionResult ConsultasAccion()
+        {
+            List<Hospital> hospitales = this.repo.GetHospitales();
+            return View(hospitales);
+        }
+        [HttpPost]
+        public IActionResult ConsultasAccion(int idhospital,string accion)
+        {
+
+            if(accion.ToUpper() == "INSERT")
+            {
+                this.repo.InsertHospital(idhospital);
+
+            }else if (accion.ToUpper() == "DELETE")
+            {
+                this.repo.DeleteHospital(idhospital);
+
+            }else if (accion.ToUpper() == "UPDATE")
+            {
+                this.repo.UpdateHospital(idhospital);
+            }
+            List<Hospital> hospitales = this.repo.GetHospitales();
+            return View(hospitales);
+        }
     }
 }

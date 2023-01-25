@@ -28,6 +28,37 @@ namespace ProyectoDatosEF.Repositories
             return consulta.FirstOrDefault();
         }
 
+        public void InsertHospital(int idhospital)
+        {
+            //1º Creamos un nuevo objeto de tipo Hospital
+            Hospital hospital = new Hospital();
+            hospital.IdHospital= idhospital;
+            hospital.Nombre = "NUEVO"; //inventado
+            hospital.Telefono = "NUEVO";
+            hospital.Camas = 99;
+            hospital.Direccion = "Calle Nueva";
+            
+            this.context.Hospitales.Add(hospital);
+            this.context.SaveChanges();
+        }
+
+        public void DeleteHospital(int idhospital)
+        {
+            Hospital hospital = FindHospital(idhospital);
+            this.context.Hospitales.Remove(hospital);
+            this.context.SaveChanges();
+        }
+
+        public void UpdateHospital(int idhospital)
+        {
+            Hospital hospital = FindHospital(idhospital);
+            hospital.Nombre = "ACTUALIZADO"; //inventado
+            hospital.Telefono = "ACTUALIZADO";
+            hospital.Camas = 99;
+            hospital.Direccion = "Calle Actualizada";
+            this.context.SaveChanges();
+        }
+
         
     }
 }

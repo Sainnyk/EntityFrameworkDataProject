@@ -8,8 +8,9 @@
 <h1>Plantilla por funcion</h1>
 
 <form method="post">
-    <label>Inserte funcion:</label>
-    <select name="funcion">
+    <label>Seleccione funcion:</label>
+    <br/>
+    <select name="funcion" >
         @foreach(String funcion in funciones)
         {
             <option value="@funcion">@funcion</option>

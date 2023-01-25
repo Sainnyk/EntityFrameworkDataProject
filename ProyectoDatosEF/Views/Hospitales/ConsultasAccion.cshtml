@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProyectoDatosEF.Models.Hospital>
+
+@{
+    ViewData["Title"] = "ConsultasAccion";
+}
+
+<h1>Consultas Acción Hospitales</h1>
+
+<form method="post">
+    <label>Id Hospital:</label>
+    <input type="text" name="idhospital" class="form-control" required/>
+    <hr/>
+    <button class="btn btn-success" name="accion" value="INSERT">Insertar</button>
+    <button class="alert-dark" name="accion" value="UPDATE">Modificar</button>
+    <button class="alert-danger" name="accion" value="DELETE">Eliminar</button>
+</form>
+<table class="table table-warning">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHospital)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Camas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHospital)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Camas)
+            </td>
+            <td>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
