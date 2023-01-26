@@ -26,18 +26,17 @@ namespace ProyectoDatosEF.Controllers
             return View(empleados);
         }
 
-        public IActionResult Delete(int idempleado)
+        public IActionResult Delete(int id)
         {
-            Empleado emp = this.repo.FindEmpleado(idempleado);
+            Empleado emp = this.repo.FindEmpleado(id);
             return View(emp);
         }
 
         [HttpPost]
-        public IActionResult Delete(int idempleado)
+        public IActionResult Delete(Empleado emp)
         {
-            Empleado emp = this.repo.FindEmpleado(idempleado);
-            this.repo.DeleteEmpleado(idempleado);
-            return RedirectToAction("Index");
+            this.repo.DeleteEmpleado(emp.IdEmpleado);
+            return RedirectToAction("ListadoEmpleados");
         }
     }
 }
